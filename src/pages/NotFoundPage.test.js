@@ -26,5 +26,6 @@ test('should render <NotFoundPage /> as defined', () => {
   );
   let tree = component.toJSON();
   expectExport(tree).toMatchSnapshot();
-})
 
+  // expect(component).
+});
