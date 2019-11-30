@@ -8,16 +8,16 @@ const MainNav = ({ props }) => (
         <nav>
             <ul>
                 <li>
-                    <NavLink to="/" exact>home</NavLink>
+                    <NavLink to="/" exact>accueil</NavLink>
                 </li>
                 <li>
                     <NavLink to="/auth">login</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/events">events</NavLink>
+                    <NavLink to="/events">évènements</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/bookings">bookings</NavLink>
+                    <NavLink to="/bookings">reservations</NavLink>
                 </li>
             </ul>
         </nav>
