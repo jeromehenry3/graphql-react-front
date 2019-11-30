@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render <AuthPage /> as defined 1`] = `
+<form
+  className="ui form login-form"
+  onSubmit={[Function]}
+>
+  <div
+    className="field"
+  >
+    <label>
+      email
+    </label>
+    <div
+      className="ui input"
+    >
+      <input
+        onChange={[Function]}
+        placeholder="email"
+        type="text"
+        value=""
+      />
+    </div>
+  </div>
+  <div
+    className="field"
+  >
+    <label>
+      mot de passe
+    </label>
+    <div
+      className="ui input"
+    >
+      <input
+        onChange={[Function]}
+        placeholder="mot de passe"
+        type="password"
+        value=""
+      />
+    </div>
+  </div>
+  <div
+    className="field"
+  >
+    <button
+      className="ui button"
+      id="signup"
+      onClick={[Function]}
+    >
+      Créer un compte
+    </button>
+  </div>
+  <div
+    className="field"
+  >
+    <button
+      className="ui button"
+      onClick={[Function]}
+      type="submit"
+    >
+      Se connecter
+    </button>
+  </div>
+</form>
+`;

@@ -41,6 +41,9 @@ const AuthPage = () => {
         }).then(
             resData => {
                 console.table(resData.data.login);
+                if (resData.errors) {
+                    alert(resData.errors[0].message);
+                }
             }
         ).catch(
             err => {
@@ -110,7 +113,7 @@ const AuthPage = () => {
                 onChange={handleChangePassword}
             >
             </Form.Input>
-            {view === 'login' && <Form.Button onClick={() => setView('signup')}>Créer un compte</Form.Button>}
+            {view === 'login' && <Form.Button id="signup" onClick={() => setView('signup')}>Créer un compte</Form.Button>}
             {view === 'signup' && <Form.Button onClick={() => setView('login')}>Déjà un compte ?</Form.Button>}
             <Form.Button type="submit">{view === 'login' ? 'Se connecter' : 'S\'inscrire'}</Form.Button>
         </Form>
