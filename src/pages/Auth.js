@@ -9,7 +9,48 @@ const AuthPage = () => {
     const [view, setView] = useState('login')
 
     const handleSubmit = (event) => {
-        event.preventDefault();
+        view === 'login'
+            ? connectUser(event)
+            : createUser(event);
+    }
+
+    const createUser = eventPassed => {
+        eventPassed.preventDefault();
+        if (email.trim() === '' || password === '') return;
+        const queryBody = {
+            query: `
+            mutation {
+                createUser(userInput: {email: "${email}", password: "${password}"}) {
+                    _id
+                    email
+                }
+            }
+            `
+        };
+        fetch('http://localhost:3000/graphql', {
+            method: 'POST',
+            body: JSON.stringify(queryBody),
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        }).then(res => {
+            if (res.status !== 200 && res.status !== 201) {
+                throw new Error("Erreur de connexion");
+            }
+            return res.json();        
+        }).then(
+            resData => {
+                console.table(resData.data.login);
+            }
+        ).catch(
+            err => {
+                console.error(err);
+            }
+        )
+    }
+
+    const connectUser = (eventPassed) => {
+        eventPassed.preventDefault();
         console.log(email, password);
         if (email.trim() === '' || password === '') return;
 
@@ -31,7 +72,20 @@ const AuthPage = () => {
             headers: {
                 'Content-Type': 'application/json',
             }
-        }).then(data => console.log(data))
+        }).then(res => {
+            if (res.status !== 200 && res.status !== 201) {
+                throw new Error("Erreur de connexion");
+            }
+            return res.json();        
+        }).then(
+            resData => {
+                console.table(resData.data.login);
+            }
+        ).catch(
+            err => {
+                console.error(err);
+            }
+        )
     }
 
     const handleChangeEmail = (event, target) => setEmail(target.value)
