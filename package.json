@@ -30,6 +30,15 @@
     ]
   },
   "devDependencies": {
-    "jest": "^24.9.0"
+    "@babel/core": "^7.7.4",
+    "@babel/preset-env": "^7.7.4",
+    "@testing-library/react": "^9.3.2",
+    "babel-jest": "^24.9.0",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
+    "jest": "^24.9.0",
+    "jsdom": "^15.2.1",
+    "jsdom-global": "^3.0.2",
+    "react-test-renderer": "^16.12.0"
   }
 }
