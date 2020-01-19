@@ -37,8 +37,8 @@ function App() {
           {/* ROUTES */}
           {!token && <Route path="/auth" component={AuthPage} />}
           {/* UNAUTHENTICATED REDIRECTION */}
-          {!token && <Redirect to="/auth"/>}
           <Route path="/events" component={EventsPage} />
+          {!token && <Redirect to="/auth"/>}
           {token && <Route path="/bookings" component={BookingsPage} />}
           <Route component={NotFoundPage} />
 
