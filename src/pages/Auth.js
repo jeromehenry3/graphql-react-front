@@ -1,12 +1,14 @@
-import React, { useState, propTypes } from 'react';
+import React, { useState, propTypes, useContext } from 'react';
 import { Form } from 'semantic-ui-react';
+import AuthContext from '../context/auth-context';
 
 import './Auth.css';
 
 const AuthPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [view, setView] = useState('login')
+    const [view, setView] = useState('login');
+    const context = useContext(AuthContext);
 
     const handleSubmit = (event) => {
         view === 'login'
@@ -41,7 +43,7 @@ const AuthPage = () => {
             if (res.status !== 200 && res.status !== 201) {
                 throw new Error("Erreur de connexion");
             }
-            return res.json();        
+            return res.json();
         }).then(
             resData => {
                 console.table(resData.data.login);
@@ -91,6 +93,9 @@ const AuthPage = () => {
         }).then(
             resData => {
                 console.table(resData.data.login);
+                if (resData.data.login.token) {
+                    context.login(resData.data.login.token, resData.data.login.userId, resData.data.login.tokenExpiration);
+                }
             }
         ).catch(
             err => {
