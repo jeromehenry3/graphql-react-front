@@ -20,9 +20,16 @@ const MainNav = ({ props }) => (
                         <li>
                             <NavLink to="/events">évènements</NavLink>
                         </li>
-                        {context.token && <li>
-                            <NavLink to="/bookings">reservations</NavLink>
-                        </li>}
+                        {context.token && (
+                            <>
+                                <li>
+                                    <NavLink to="/bookings">reservations</NavLink>
+                                </li>
+                                <li>
+                                    <button className="nav-button" onClick={context.logout}>déconnexion</button>
+                                </li>
+                            </>
+                        )}
                     </ul>
                 </nav>
             </header>)
