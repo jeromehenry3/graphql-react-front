@@ -20,3 +20,7 @@
     margin: 10px 0;
     justify-content: center;
 }
+.event__item>strong {
+    margin: 0 .6em;
+    color: grey;
+}

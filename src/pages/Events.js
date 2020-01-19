@@ -1,4 +1,5 @@
-import React, { Component, useContext } from 'react';
+import React, { Component } from 'react';
+import Moment from 'react-moment';
 import { Button, Form, TextArea, Input } from 'semantic-ui-react';
 import AuthContext from '../context/auth-context';
 import Modal from '../components/Modal/Modal';
@@ -190,7 +191,7 @@ class EventsPage extends Component {
                 </div>}
                 <ul className="events__list">
                     {this.state.events && this.state.events.map(
-                        evt => <li className="event__item">titre: {evt.title} date: {evt.date} prix: {evt.price} description: {evt.description}</li>
+                    evt => <li className="event__item"><strong>titre:</strong> {evt.title} <strong>prix:</strong> {evt.price} €<strong>description:</strong> {evt.description} <strong>date:</strong> <Moment dateToFormat={evt.date} format="DD/MM/YYYY" /></li>
                     )}
                 </ul>
             </>
