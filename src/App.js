@@ -14,7 +14,6 @@ function App() {
   const [token, setToken] = useState(null);
   const [userId, setUserId] = useState(null);
   const login = (token, userId, tokenExpiration) => {
-    console.error('login in App')
     setToken(token);
     setUserId(userId);
   };
