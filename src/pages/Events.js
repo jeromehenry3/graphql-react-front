@@ -20,6 +20,10 @@ class EventsPage extends Component {
         this.descriptionElRef = React.createRef();
     }
 
+    componentDidMount() {
+        this.fetchEvents();
+    }
+
     handleCreateEventButton = () => {
         this.setState({ creating: true });
     }
@@ -86,6 +90,46 @@ class EventsPage extends Component {
         )
     }
 
+    fetchEvents = () => {
+        const queryBody = {
+            query: `
+            query {
+                events {
+                  _id
+                  title 
+                  description
+                  date
+                  price
+                  creator {
+                      _id
+                      email
+                  }
+                }
+              }
+            `
+        };
+        fetch('http://localhost:3000/graphql', {
+            method: 'POST',
+            body: JSON.stringify(queryBody),
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        }).then(res => {
+            if (res.status !== 200 && res.status !== 201) {
+                throw new Error("Erreur de connexion");
+            }
+            return res.json();        
+        }).then(
+            resData => {
+                console.table(resData);
+            }
+        ).catch(
+            err => {
+                console.error(err);
+            }
+        )
+    }
+
     render() {
         return (
             <>
@@ -130,9 +174,13 @@ class EventsPage extends Component {
                         </Form>
                     </Modal>
                 </>}
-                <div className="create-event_button">
+                {this.context.token && <div className="create-event_button">
                     <Button onClick={this.handleCreateEventButton}>Créer un évènement</Button>
-                </div>
+                </div>}
+                <ul className="events__list">
+                    <li className="event__item">Test</li>
+                    <li className="event__item">Test</li>
+                </ul>
             </>
         );
     }

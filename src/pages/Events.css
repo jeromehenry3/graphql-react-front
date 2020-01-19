@@ -5,3 +5,18 @@
     flex-direction: row;
     justify-content: center;
 }
+
+.events__list {
+    display: flex;
+    flex-direction: column;
+}
+
+.event__item {
+    width: 60%;
+    padding: 1em;
+    font-weight: bold;
+    color: #4183c4;
+    border: 1px solid #4183c4;
+    margin: 10px 0;
+    justify-content: center;
+}
