@@ -30,15 +30,18 @@ function App() {
         <MainNav />
         <Switch>
           {/* REDIRECTIONS */}
-          {!token && <Redirect from="/" to="/auth" exact/>}
+          {/* {!token && <Redirect from="/bookings" to="/auth" exact/>} */}
           {token && <Redirect from="/" to="/events" exact/>}
           {token && <Redirect from="/auth" to="/events" exact/>}
 
           {/* ROUTES */}
           {!token && <Route path="/auth" component={AuthPage} />}
+          {/* UNAUTHENTICATED REDIRECTION */}
+          {!token && <Redirect to="/auth"/>}
           <Route path="/events" component={EventsPage} />
           {token && <Route path="/bookings" component={BookingsPage} />}
           <Route component={NotFoundPage} />
+
         </Switch>
       </AuthContext.Provider>
       
