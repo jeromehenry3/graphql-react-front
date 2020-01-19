@@ -9,6 +9,7 @@ import './Events.css';
 class EventsPage extends Component {
     state = {
         creating: false,
+        events: [],
     }
     static contextType = AuthContext;
 
@@ -82,6 +83,12 @@ class EventsPage extends Component {
         }).then(
             resData => {
                 console.table(resData);
+                this.setState({
+                    events: [
+                        ...this.state.events,
+                        event,
+                    ]
+                })
             }
         ).catch(
             err => {
@@ -122,6 +129,10 @@ class EventsPage extends Component {
         }).then(
             resData => {
                 console.table(resData);
+                const events = resData.data.events;
+                this.setState({
+                    events: [ ...events ],
+                })
             }
         ).catch(
             err => {
@@ -178,8 +189,9 @@ class EventsPage extends Component {
                     <Button onClick={this.handleCreateEventButton}>Créer un évènement</Button>
                 </div>}
                 <ul className="events__list">
-                    <li className="event__item">Test</li>
-                    <li className="event__item">Test</li>
+                    {this.state.events && this.state.events.map(
+                        evt => <li className="event__item">titre: {evt.title} date: {evt.date} prix: {evt.price} description: {evt.description}</li>
+                    )}
                 </ul>
             </>
         );
