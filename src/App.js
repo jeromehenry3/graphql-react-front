@@ -29,10 +29,15 @@ function App() {
       <AuthContext.Provider value={{token: token, userId: userId, login: login, logout: logout}}>
         <MainNav />
         <Switch>
-          <Redirect from="/" to="/auth" exact/>
-          <Route path="/auth" component={AuthPage} />
+          {/* REDIRECTIONS */}
+          {!token && <Redirect from="/" to="/auth" exact/>}
+          {token && <Redirect from="/" to="/events" exact/>}
+          {token && <Redirect from="/auth" to="/events" exact/>}
+
+          {/* ROUTES */}
+          {!token && <Route path="/auth" component={AuthPage} />}
           <Route path="/events" component={EventsPage} />
-          <Route path="/bookings" component={BookingsPage} />
+          {token && <Route path="/bookings" component={BookingsPage} />}
           <Route component={NotFoundPage} />
         </Switch>
       </AuthContext.Provider>
