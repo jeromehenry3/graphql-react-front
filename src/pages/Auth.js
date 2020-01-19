@@ -14,6 +14,10 @@ const AuthPage = () => {
             : createUser(event);
     }
 
+    /**
+     * create user API request
+     * @param {event} eventPassed 
+     */
     const createUser = eventPassed => {
         eventPassed.preventDefault();
         if (email.trim() === '' || password === '') return;
@@ -52,6 +56,10 @@ const AuthPage = () => {
         )
     }
 
+    /**
+     * connect user to API request
+     * @param {event} eventPassed 
+     */
     const connectUser = (eventPassed) => {
         eventPassed.preventDefault();
         console.log(email, password);
