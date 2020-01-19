@@ -19,8 +19,10 @@
     border: 1px solid #4183c4;
     margin: 10px 0;
     justify-content: center;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
 }
-.event__item>strong {
-    margin: 0 .6em;
+.event__item strong {
+    margin-right: .6em;
     color: grey;
 }

@@ -191,7 +191,12 @@ class EventsPage extends Component {
                 </div>}
                 <ul className="events__list">
                     {this.state.events && this.state.events.map(
-                    evt => <li className="event__item"><strong>titre:</strong> {evt.title} <strong>prix:</strong> {evt.price} €<strong>description:</strong> {evt.description} <strong>date:</strong> <Moment dateToFormat={evt.date} format="DD/MM/YYYY" /></li>
+                    evt => <li className="event__item">
+                        <span className="event__item__cell"><strong>titre:</strong> {evt.title}</span> 
+                        <span className="event__item__cell"><strong>prix:</strong> {evt.price} €</span>
+                        <span className="event__item__cell"><strong>description:</strong> {evt.description}</span> 
+                        <span className="event__item__cell"><strong>date:</strong> <Moment dateToFormat={evt.date} format="DD/MM/YYYY" /></span>
+                    </li>
                     )}
                 </ul>
             </>
